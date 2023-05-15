@@ -8,10 +8,11 @@ int main()
     cout << test.increment("A1") << endl;
     cout << test.increment("A1") << endl;
 
-    test.setValue("A1", 77);
-    cout << test.increment("A1") << endl;
+    test.setValue("A1-Z9-A1-Z9-A1-Z9-A1-Z9-A1-Z9", 77);
+    cout << test.increment("A1-Z9-A1-Z9-A1-Z9-A1-Z9-A1-Z9") << endl;
 
-    cout << test.increment("A2") << endl;
+    test.setValue("A1-Z9-A1-Z9-A1-Z9-A1-Z9-A1-Z9-A1", 77);
+    cout << test.increment("A1-Z9-A1-Z9-A1-Z9-A1-Z9-A1-Z9-A1") << endl;
 
 
     test.setValue("A1-F5", 55);

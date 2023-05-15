@@ -30,7 +30,7 @@ bool StlMass::setValue(string id, int value)
         //  Идентификатор ещё не существует. Принимает значение по умолчанию = 0
         //  Увеличиваем на 1 и возвращаем результат
         mass.insert( MyPair(id, value) );
-        cout << "Insert value " << value << endl;
+        cout << "Insert value. " << id << " : " << value << endl;
         my_mutex.unlock();
         return true;
     }
