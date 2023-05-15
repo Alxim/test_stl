@@ -44,6 +44,12 @@ StlMass::StlMass()
     symbols.push_back('Z');
 
     vector<char>::iterator iter_sym;
+    vector<string>::iterator iter_syllbles;
+    vector<string>::iterator iter_syllbles_begin;
+    vector<string>::iterator iter_syllbles_end;
+    list<string>::iterator iter_keys;
+    list<string>::iterator iter_keys_begin;
+    list<string>::iterator iter_keys_end;
 
     for(iter_sym = symbols.begin() ; iter_sym != symbols.end() ; iter_sym++)
     {
@@ -56,9 +62,48 @@ StlMass::StlMass()
             str.push_back(char(48+i) );
 
             cout << str << endl;
+            syllables.push_back(str);
+            keys.push_back(str);
             mass.insert( MyPair(str, 0) );
         }
     }
 
-//    cout << symbol;
+    //  Фиксируем постоянны итераторы, чтобы не получать их по несколько раз в цикле
+    iter_syllbles_begin = syllables.begin();
+    iter_syllbles_end = syllables.end();
+    iter_keys_begin = keys.begin();
+    iter_keys_end = keys.end();
+
+    int i = 0;
+
+    for(iter_keys = iter_keys_begin; iter_keys != iter_keys_end; iter_keys++)
+    {
+        string str;
+
+        for(iter_syllbles = iter_syllbles_begin ; iter_syllbles != iter_syllbles_end ; iter_syllbles++)
+        {
+            str.clear();
+            str = *iter_keys;
+            str.push_back('-');
+            str.insert(str.size(), *iter_syllbles);
+
+            if(str.size() > 30)
+            {
+                cout << "All good" << endl;
+                cout << str << endl;
+                return;
+            }
+
+            keys.push_back(str);
+            mass.insert( MyPair(str, 0) );
+            i++;
+
+//            if( i % 100000)
+//                cout << str << endl;
+        }
+
+//        cout << str << endl;
+    }
+
+    //    cout << symbol;
 }

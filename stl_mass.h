@@ -7,6 +7,8 @@ using namespace std;
 #include <map>
 #include <vector>
 #include <sstream>
+#include <list>
+
 
 typedef std::map<string, int> MyMap;
 typedef pair<string, int> MyPair;
@@ -18,9 +20,31 @@ public:
 
 private:
 
+    /*!
+     * \brief symbols - разрешённые символы
+     */
     vector<char> symbols;
+
+    /*!
+     * \brief symbols_ban - запрещённые символы
+     */
     vector<char> symbols_ban;
 
+    /*!
+     * \brief syllabas - слоги
+     */
+    vector<string> syllables;
+
+
+    /*!
+     * \brief keys - ключи для массива, они же идентификаторы
+     */
+    list<string> keys;
+
+
+    /*!
+     * \brief mass - массив идентификаторов
+     */
     MyMap mass;
 };
 
