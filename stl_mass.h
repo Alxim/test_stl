@@ -5,10 +5,8 @@ using namespace std;
 
 #include <iostream>
 #include <map>
-#include <vector>
-#include <sstream>
 #include <list>
-
+#include <regex>
 
 typedef std::map<string, int> MyMap;
 typedef pair<string, int> MyPair;
@@ -18,29 +16,13 @@ class StlMass
 public:
     StlMass();
 
+    void setValue(string id, int value);
+    int increment(string id);
+
 private:
 
-    /*!
-     * \brief symbols - разрешённые символы
-     */
-    vector<char> symbols;
 
-    /*!
-     * \brief symbols_ban - запрещённые символы
-     */
-    vector<char> symbols_ban;
-
-    /*!
-     * \brief syllabas - слоги
-     */
-    vector<string> syllables;
-
-
-    /*!
-     * \brief keys - ключи для массива, они же идентификаторы
-     */
-    list<string> keys;
-
+    const regex reg = regex(R"([ABCEHIKLNOPRSTUEXYZ][1-9](-[ABCEHIKLNOPRSTUEXYZ][1-9]){0,9})");
 
     /*!
      * \brief mass - массив идентификаторов
