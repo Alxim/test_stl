@@ -32,11 +32,18 @@ public:
      */
     int increment(string id);
 
-    mutex my_mutex;
-
 private:
 
+    /*!
+     * \brief reg - шаблон регулярно выражения для проверки правильности ввода идентификатора
+     */
     const regex reg = regex(R"([ABCEHIKLNOPRSTUEXYZ][1-9](-[ABCEHIKLNOPRSTUEXYZ][1-9]){0,9})");
+
+
+    /*!
+     * \brief my_mutex - мьютекс для индивидуалььного доступа к данным класса
+     */
+    mutex my_mutex;
 
     /*!
      * \brief mass - массив идентификаторов
