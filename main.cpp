@@ -7,10 +7,14 @@ int main()
     test.setValue("A1", 55);
     cout << test.increment("A1") << endl;
     cout << test.increment("A1") << endl;
+
+
+    test.my_mutex.lock();
     test.setValue("A1", 77);
     cout << test.increment("A1") << endl;
 
     cout << test.increment("A2") << endl;
+
 
     test.setValue("A1-F5", 55);
 

@@ -32,6 +32,7 @@ public:
      */
     int increment(string id);
 
+    mutex my_mutex;
 
 private:
 
