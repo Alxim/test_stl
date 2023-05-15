@@ -1,19 +1,19 @@
 #include "stl_mass.h"
 
-//«D», «F», «G», «J», «M», «Q», «V» и цифра «0».
-
-// [ABCEHIKLNOPRSTUEXYZ][1-9](-[ABCEHIKLNOPRSTUEXYZ][1-9]){0,9}
 
 StlMass::StlMass()
 {
 }
 
-void StlMass::setValue(string id, int value)
+
+//************************************************************************************************************************
+
+bool StlMass::setValue(string id, int value)
 {
     if( regex_match(id.data(), reg) == 0 )
     {
         cout << "Id " << id << " not find" << endl;
-        return;
+        return false;
     }
 
     MyMap::iterator result = mass.find(id);
@@ -23,10 +23,18 @@ void StlMass::setValue(string id, int value)
         //  Идентификатор ещё не существует. Принимает значение по умолчанию = 0
         //  Увеличиваем на 1 и возвращаем результат
         mass.insert( MyPair(id, value) );
+        cout << "Insert value " << value << endl;
+        return true;
     }
 
+    mass.erase(id);
     mass.insert( MyPair(id, value) );
+    cout << "Update value " << value << endl;
+    return true;
 }
+
+
+//************************************************************************************************************************
 
 int StlMass::increment(string id)
 {
@@ -42,6 +50,8 @@ int StlMass::increment(string id)
     {
         //  Идентификатор ещё не существует. Принимает значение по умолчанию = 0
         //  Увеличиваем на 1 и возвращаем результат
+
+        cout << "Increment success. Current value " << id << " : " << 1 << endl;
         mass.insert( MyPair(id, 1) );
         return 1;
     }
@@ -51,5 +61,6 @@ int StlMass::increment(string id)
 
     mass.erase(id);
     mass.insert( MyPair(id, value) );
+    cout << "Increment success. Current value " << id << " : " << value << endl;
     return value;
 }
